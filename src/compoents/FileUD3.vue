@@ -4,7 +4,7 @@
  * @Author: 袁金林 yuanjinlin@guishangyi.cn
  * @Date: 2023-06-09 15:20:45
  * @LastEditors: Jin 1075360356@qq.com
- * @LastEditTime: 2025-09-15 16:52:02
+ * @LastEditTime: 2025-09-15 16:58:35
  * @FilePath: \code\gsy-mall-control-frontend\src\components\FileUD\index.vue
  * @Description: 用于上传和下载组件
  *
@@ -212,7 +212,11 @@ const props = withDefaults(defineProps<FileUD3Props>(), {
 const fileUDIcons = inject<installOptions>("fileUDIcons");
 
 if (fileUDIcons?.icons) {
-  imageModules = { ...imageModules, ...fileUDIcons.icons };
+  if (props.customIcons) {
+    imageModules = fileUDIcons.icons;
+  } else {
+    imageModules = { ...imageModules, ...fileUDIcons.icons };
+  }
 }
 
 const emit = defineEmits<{

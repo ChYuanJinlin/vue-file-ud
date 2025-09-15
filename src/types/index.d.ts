@@ -58,6 +58,7 @@ export declare interface FileUD3Props {
   disabled?: boolean; // 是否禁用上传功能
   onSuccess?: (res: any, chunks: Chunks, fileObj: FileObj) => void; // 上传成功的回调函数
   customUpload?: (fileItem: File, FileObj: FileObj) => void; // 自定义上传逻辑
+  customIcons?: boolean;
   file?:
     | string
     | ((formData: FormData, value: FileObj[], index: number) => FormData); // 文件字段的名称
