@@ -485,7 +485,7 @@ const restUpload = (index: number) => {
 let _index = 0;
 // 选择文件
 function selectFile(files: FileList) {
-  Array.from(files).forEach((fileItem: File) => {
+  Array.from(files).forEach( async (fileItem: File) => {
     const fileObj = ref<FileObj>({
       File: null,
       percent: 0,
@@ -495,7 +495,8 @@ function selectFile(files: FileList) {
     });
     if (props.beforeUpload) {
       try {
-        if (!props.beforeUpload(fileItem)) {
+        const result = await props.beforeUpload(fileItem);
+        if (!result) {
           return;
         }
       } catch (error) {
