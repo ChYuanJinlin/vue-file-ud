@@ -1,0 +1,56 @@
+{
+  "name": "vue3-file-ud",
+  "version": "1.0.0",
+  "description": "一个基于 Vue3 + Element Plus 的文件上传/下载，支持拖拽、进度、类型/大小校验等功能。",
+  "main": "index.ts",
+  "types": "types/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "prepublishOnly": "npm run build",
+    "test": "vitest"
+  },
+  "keywords": [
+    "vue3",
+    "上传",
+    "upload",
+    "file-upload",
+    "分片上传",
+    "文件上传",
+    "文件下载",
+    "vue文件上传下载组件",
+    "下载",
+    "组件",
+    "fileud"
+  ],
+  "author": "袁金林 <yuanjinlin@guishangyi.cn>",
+  "license": "MIT",
+  "peerDependencies": {
+    "element-plus": ">=2.0.0",
+    "vue": ">=3.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@types/node": "^24.0.4",
+    "@types/vue": "^1.0.31",
+    "@vue/test-utils": "^2.4.6",
+    "sass-embedded": "^1.89.2",
+    "typescript": "^5.0.0",
+    "unplugin-auto-import": "^19.3.0",
+    "unplugin-vue-components": "^28.7.0",
+    "vite": "^7.0.0",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "axios": "^1.10.0",
+    "sass": "^1.89.2",
+    "sass-loader": "^16.0.5",
+    "vue-router": "^4.5.1"
+  }
+}
