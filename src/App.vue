@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import FileUD3 from "@/compoents/FileUD3";
+import FileUD3 from "@/compoents/FileUD3.vue";
 import deleteIcon from "@/images/delete-icon.png";
 const FileUD3Ref = ref(null);
 const list = ref([

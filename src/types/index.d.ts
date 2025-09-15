@@ -10,7 +10,10 @@ export declare interface FileObj extends Record<string, any> {
   percent: number; // 文件上传的进度百分比
   status: "pending" | "success" | "fail" | null; // 文件的状态，如 'uploading', 'success', 'error' 等
 }
-
+export declare interface installOptions {
+  icons?: Record<string, unknown>;
+  base?: string;
+}
 // 定义 FileProps 类型，表示文件的属性
 export declare interface FileProps {
   fileName: string; // 文件名

@@ -1,13 +1,9 @@
 {
   "name": "vue3-file-ud",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "一个基于 Vue3 + Element Plus 的文件上传/下载，支持拖拽、进度、类型/大小校验等功能。",
   "main": "index.ts",
   "types": "types/index.d.ts",
-  "files": [
-    "dist",
-    "README.md"
-  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",

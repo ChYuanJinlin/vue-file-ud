@@ -4,7 +4,7 @@
  * @Author: 袁金林 yuanjinlin@guishangyi.cn
  * @Date: 2023-06-09 15:20:45
  * @LastEditors: Jin 1075360356@qq.com
- * @LastEditTime: 2025-09-15 10:40:38
+ * @LastEditTime: 2025-09-15 16:52:02
  * @FilePath: \code\gsy-mall-control-frontend\src\components\FileUD\index.vue
  * @Description: 用于上传和下载组件
  *
@@ -158,7 +158,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { inject, ref, watch } from "vue";
 import {
   getFileExtension,
   formatFileSize,
@@ -166,10 +166,10 @@ import {
 } from "@/utils/utils";
 import { ElMessage, ElMessageBox } from "element-plus";
 import axios, { AxiosProgressEvent } from "axios";
-import { ChunksProps, FileObj, FileUD3Props } from "@/types";
+import { ChunksProps, FileObj, FileUD3Props, installOptions } from "@/types";
 
 // 动态导入所有图片资源
-const imageModules = import.meta.glob("@/images/*-icon.png", {
+let imageModules = import.meta.glob("@/images/*-icon.png", {
   eager: true,
   import: "default",
 });
@@ -209,6 +209,11 @@ const props = withDefaults(defineProps<FileUD3Props>(), {
   onDownload: undefined,
   chunkSize: 1024 * 1024 * 5, // 默认分片大小为5MB
 });
+const fileUDIcons = inject<installOptions>("fileUDIcons");
+
+if (fileUDIcons?.icons) {
+  imageModules = { ...imageModules, ...fileUDIcons.icons };
+}
 
 const emit = defineEmits<{
   (e: "update:modelValue", value: Array<FileObj>): void;
@@ -485,7 +490,7 @@ const restUpload = (index: number) => {
 let _index = 0;
 // 选择文件
 function selectFile(files: FileList) {
-  Array.from(files).forEach( async (fileItem: File) => {
+  Array.from(files).forEach(async (fileItem: File) => {
     const fileObj = ref<FileObj>({
       File: null,
       percent: 0,
@@ -674,9 +679,14 @@ function getImg(item: any) {
     "";
 
   const iconPath = `/src/images/${ext}-icon.png`;
+  let base = fileUDIcons?.base?.replace("*", ext);
 
+  if (base !== undefined) {
+    base = `../../..${imageModules[base]}`;
+  }
   return (
     (imageModules as Record<string, string>)[iconPath] ||
+    (imageModules[base!] ? base : "") ||
     (imageModules as Record<string, string>)["/src/images/unknown-icon.png"] ||
     ""
   );
