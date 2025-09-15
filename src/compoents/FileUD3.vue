@@ -4,7 +4,7 @@
  * @Author: 袁金林 yuanjinlin@guishangyi.cn
  * @Date: 2023-06-09 15:20:45
  * @LastEditors: Jin 1075360356@qq.com
- * @LastEditTime: 2025-09-15 16:58:35
+ * @LastEditTime: 2025-09-15 17:01:33
  * @FilePath: \code\gsy-mall-control-frontend\src\components\FileUD\index.vue
  * @Description: 用于上传和下载组件
  *
@@ -212,11 +212,7 @@ const props = withDefaults(defineProps<FileUD3Props>(), {
 const fileUDIcons = inject<installOptions>("fileUDIcons");
 
 if (fileUDIcons?.icons) {
-  if (props.customIcons) {
-    imageModules = fileUDIcons.icons;
-  } else {
-    imageModules = { ...imageModules, ...fileUDIcons.icons };
-  }
+  imageModules = { ...imageModules, ...fileUDIcons.icons };
 }
 
 const emit = defineEmits<{
@@ -573,7 +569,7 @@ function changeFile(e: { target: { files: FileList } }) {
   const files = e.target.files;
   selectFile(files);
 }
-/* 
+/*
 // If you need handlePauseUpload, uncomment and use it where needed.
 const handlePauseUpload = (item: FileObj) => {
   if (!item.pauseUpload) {
@@ -689,8 +685,8 @@ function getImg(item: any) {
     base = `../../..${imageModules[base]}`;
   }
   return (
-    (imageModules as Record<string, string>)[iconPath] ||
     (imageModules[base!] ? base : "") ||
+    (imageModules as Record<string, string>)[iconPath] ||
     (imageModules as Record<string, string>)["/src/images/unknown-icon.png"] ||
     ""
   );
