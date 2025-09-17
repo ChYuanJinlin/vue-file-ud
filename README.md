@@ -1,33 +1,43 @@
-# fileUD3
+# fileud-upload
 
-This template should help get you started developing with Vue 3 in Vite.
+一个基于 Vue3 的大文件上传/下载，拖拽、进度、类型/大小校验等功能。
 
-## Recommended IDE Setup
+## 安装
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+```bash
+npm install vue3-fileUD
 ```
 
-### Compile and Hot-Reload for Development
+## 使用
 
-```sh
-npm run dev
+```js
+import FileUD from "vue3-file-ud";
+// 在你的 Vue 组件中注册并使用
 ```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
+```vue
+<FileUD v-model="fileList" :action="uploadUrl" />
 ```
+
+## Props
+
+- modelValue / v-model：文件列表
+- action：上传地址
+- fileTypes：允许的文件类型
+- fileSize：文件大小限制（MB）
+- limit：最大数量
+- ...（详见源码）
+
+## 事件
+
+- uploadSuccess
+- download
+
+## 说明
+
+- 依赖 vue3、element-plus
+- 支持 TypeScript
+
+---
+
+如需更多用法和自定义，请参考源码。
